@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Destination</title>
+    <script src = "dest.js" defer > </script>
     <link rel="stylesheet" href="../static/form style.css">
-    
 </head>
 <body>
     <h1>
@@ -15,7 +15,7 @@
     </h1>
     <br>
     <h2>New Destination</h2>
-    <form> 
+    <form onsubmit="save(event)" >
 
         <!--Destination code:-->
         <label for="destCode"> Destination code:</label>
@@ -36,11 +36,9 @@
         <!--image url time:-->
         <label for="imgUrl"> image url:</label>
         <input type="url" id="imgUrl" name="imgUrl"></br>
-
+        
+        <button type="submit">Save</button>
     </form>
-    <br>
-    <br>
-    <button type="submit">Save</button>
 
 </body>
 <footer>

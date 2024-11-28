@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src = "../Add Destinations/dest.js" defer > </script>
+    <script src = "manageDest.js" defer > </script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body onload="showDest()">
     <h1>
         <a href="../index/index.html">
             <img src="../pictures/logo.jpg" alt="Logo" style="height: 50px;"> <!-- Updated path -->
@@ -14,11 +16,14 @@
     </h1>
         <h2>Manage Destinations</h2>
 
-        <table>
+        <table id ="ManageTable">
             <tr>
                 <th>Name</th>
                 <th>Airport Name</th>
                 <th>Airport Website</th>
+                <th>Destination code</th>
+                <th>image url</th>
+
             </tr>
         </table>
         <br>
