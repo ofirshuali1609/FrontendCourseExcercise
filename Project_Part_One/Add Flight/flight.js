@@ -1,7 +1,5 @@
-
 class Flgt {
-
-    constructor(flightNum, Origin, Destation, BoardDate, BoardTime, ArrivalDate, ArrivalTime, NoSeat ) {
+    constructor(flightNum, Origin, Destation, BoardDate, BoardTime, ArrivalDate, ArrivalTime, NoSeat) {
         this.flightNum = flightNum;
         this.Origin = Origin;
         this.Destation = Destation;
@@ -10,69 +8,108 @@ class Flgt {
         this.ArrivalDate = ArrivalDate;
         this.ArrivalTime = ArrivalTime;
         this.NoSeat = NoSeat;
-
-
     }
 
-    validate() { 
-       if (this.flightNum.length == 0  || this.Origin.length == 0 || this.Destation.length == 0 || this.NoSeat.length == 0 || this.BoardTime.length == 0 || this.ArrivalTime.length == 0 ) { 
-        alert("error")
-        return false 
-       }
-
-       if(this.BoardDate == 0 && this.ArrivalDate.length == 0 || this.BoardDate > this.ArrivalDate )  { 
-        alert("error")
-        return false 
-       }
-
-       for (const f of Flgts ) { 
-        if ( d.flightNum == this.flightNum || d.Origin == this.Origin || d.Destation == this.Destation ) { 
-            alert("error")
-            return false 
-        }               
-       }
-       return true 
+    // Function to reset form fields
+    static resetFields() {
+        document.getElementById("flightNum").value = '';
+        document.getElementById("Origin").value = '';
+        document.getElementById("Destation").value = '';
+        document.getElementById("BoardDate").value = '';
+        document.getElementById("BoardTime").value = '';
+        document.getElementById("ArrivalDate").value = '';
+        document.getElementById("ArrivalTime").value = '';
+        document.getElementById("NoSeat").value = '';
     }
 
+    validate() {
+        // Check if any of the fields are empty
+        if (!this.flightNum || this.flightNum.trim().length === 0 ||
+            !this.Origin || this.Origin.trim().length === 0 ||
+            !this.Destation || this.Destation.trim().length === 0 ||
+            !this.BoardDate || this.BoardDate.trim().length === 0 ||
+            !this.BoardTime || this.BoardTime.trim().length === 0 ||
+            !this.ArrivalDate || this.ArrivalDate.trim().length === 0 ||
+            !this.ArrivalTime || this.ArrivalTime.trim().length === 0 ||
+            !this.NoSeat || this.NoSeat.trim().length === 0) {
+            alert("Error!");
+            Flgt.resetFields(); // Reset fields in case of error
+            return false;
+        }
+
+        // Validate dates
+        const today = new Date(); // Current date
+        const boardDateObj = new Date(this.BoardDate);
+        const arrivalDateObj = new Date(this.ArrivalDate);
+
+        // Check if the dates are invalid
+        if (isNaN(boardDateObj.getTime()) || isNaN(arrivalDateObj.getTime())) {
+            alert("Error!");
+            Flgt.resetFields(); // Reset fields in case of error
+            return false;
+        }
+
+        // Check if boarding date is in the past
+        if (boardDateObj < today) {
+            alert("Error!");
+            Flgt.resetFields(); // Reset fields in case of error
+            return false;
+        }
+
+        // Check if arrival date is after boarding date
+        if (boardDateObj >= arrivalDateObj) {
+            alert("Error!");
+            Flgt.resetFields(); // Reset fields in case of error
+            return false;
+        }
+
+        // Check if the flight number already exists
+        for (const f of Flgts) {
+            if (f.flightNum === this.flightNum) {
+                alert("Error!");
+                Flgt.resetFields(); // Reset fields in case of error
+                return false;
+            }
+        }
+
+        return true; // Validation passed
+    }
+
+    // Function to format flight details for display
     print() {
-         return `${flightNum} ${Origin} ${Destation} ${BoardDate} ${BoardTime} ${ArrivalDate} ${ArrivalTime} ${NoSeat}`
+        return `Flight Number: ${this.flightNum}, Origin: ${this.Origin}, Destination: ${this.Destation}, Boarding Date: ${this.BoardDate}, Boarding Time: ${this.BoardTime}, Arrival Date: ${this.ArrivalDate}, Arrival Time: ${this.ArrivalTime}, Seats: ${this.NoSeat}`;
     }
-
 }
 
-const Flgts = [new Flgt(1, "yuval", "madari", "1/12/2024","01:01 PM", "2/12/204", "02:02 PM", 1) , new Flgt(2, "hadar", "binyamin", "3/12/2024","03:03 PM", "4/12/204", "04:04 PM", 2)]
+// Array to store flight details
+const Flgts = [
+    new Flgt(1, "yuval", "madari", "2024-12-01", "13:01", "2024-12-02", "14:02", 1),
+    new Flgt(2, "hadar", "binyamin", "2024-12-03", "15:03", "2024-12-04", "16:04", 2)
+];
 
-
-
+// Function to handle form submission
 function save(event) {
-    event.preventDefault()
-    console.log(event)
-    const f = new Flgt(event.srcElement.elements.flightNum.value , event.srcElement.elements.Origin.value ,event.srcElement.elements.Destation.value , event.srcElement.elements.BoardDate.value,event.srcElement.elements.BoardTime.value ,event.srcElement.elements.destCode.value ,event.srcElement.elements.destName.value ,event.srcElement.elements.ArrivalDate.value ,event.srcElement.elements.ArrivalTime.value ,event.srcElement.elements.NoSeat.value)
-    if (f.validate()) { 
-        Flgts.push(f)
-        alert(f.print())
-        console.log(Dests);
-        
-        event.srcElement.elements.flightNum.value = ''
-        event.srcElement.elements.Origin.value = ''
-        event.srcElement.elements.Destation.value = ''
-        event.srcElement.elements.BoardDate.value =''
-        event.srcElement.elements.BoardTime.value =''      
-        event.srcElement.elements.destCode.value = ''
-        event.srcElement.elements.destName.value = ''
-        event.srcElement.elements.ArrivalDate.value = ''
-        event.srcElement.elements.ArrivalTime.value =''
-        event.srcElement.elements.NoSeat.value =''
+    event.preventDefault(); // Prevent page refresh
+
+    // Retrieve form data
+    const f = new Flgt(
+        event.srcElement.elements.flightNum.value.trim(),
+        event.srcElement.elements.Origin.value.trim(),
+        event.srcElement.elements.Destation.value.trim(),
+        event.srcElement.elements.BoardDate.value.trim(),
+        event.srcElement.elements.BoardTime.value.trim(),
+        event.srcElement.elements.ArrivalDate.value.trim(),
+        event.srcElement.elements.ArrivalTime.value.trim(),
+        event.srcElement.elements.NoSeat.value.trim()
+    );
+
+    // Validate the data and save if valid
+    if (f.validate()) {
+        Flgts.push(f); // Add the flight to the list
+        alert(f.print());
+        console.log(Flgts);
+
+        // Reset fields after successful save
+        Flgt.resetFields();
     }
 }
-
-
-
-this.flightNum = document.getElementById("flightNum");
-this.Origin = document.getElementById("Origin");
-this.Destation = document.getElementById("Destation");
-this.BoardDate = document.getElementById("BoardDate");
-this.BoardTime = document.getElementById("BoardTime");
-this.ArrivalDate = document.getElementById("ArrivalDate");
-this.ArrivalTime = document.getElementById("ArrivalTime");
-this.NoSeat = document.getElementById("NoSeat");
