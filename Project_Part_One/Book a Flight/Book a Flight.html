@@ -3,44 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Book a Flight</title>
+    
+    <!-- Include flight.js and book.js to load the Flgts array and the necessary logic -->
+    <script src="../Add Flight/flight.js" defer></script>
+    <script src="../Book a Flight/book.js" defer></script>
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>
-        <a href="../index/index.html">
-            <img src="../pictures/logo.jpg" alt="Logo" style="height: 50px;"> <!-- Updated path -->
-        </a>
-    </h1>
-    <div class="test">
-        <h2>Book a Flights</h2>
 
-        <h4> filter by : </h4>
-        <!--Origin:-->
-        <label for="Origin"> Origin:</label>
-        <input type="text" id="Origin" name="Origin"></br>
+    <header>
+        <h1>
+            <a href="../index/index.html">
+                <img src="../pictures/logo.jpg" alt="Logo" style="height: 50px;">
+            </a>
+        </h1>
+    </header>
 
-       <!--Destation:--> 
-       <label for="Destation"> Destation:</label>
-       <input type="text" id="Destation" name="Destation"></br>
-       
+    <div class="container">
+        <h2>Book a Flight</h2>
 
-        <table>
-            <tr>
-                <th>Flight No.</th>
-                <th>Origin</th>
-                <th>Destinations</th>
-                <th>...</th>
-            </tr>
+        <h4>Filter by:</h4>
+        <!-- Origin Dropdown -->
+        <label for="originFilter">Origin:</label>
+        <select id="originFilter">
+            <option value="">Select Origin</option>
+            <!-- Origin options will be populated dynamically -->
+        </select>
+
+        <br><br>
+
+        <!-- Destination Dropdown -->
+        <label for="destinationFilter">Destination:</label>
+        <select id="destinationFilter">
+            <option value="">Select Destination</option>
+            <!-- Destination options will be populated dynamically -->
+        </select>
+
+        <br><br>
+
+        <!-- Flight Details Table -->
+        <table id="flightTable">
+            <thead>
+                <tr>
+                    <th>Flight No.</th>
+                    <th>Origin</th>
+                    <th>Destination</th>
+                    <th>Boarding Date</th>
+                    <th>Boarding Time</th>
+                    <th>Arrival Date</th>
+                    <th>Arrival Time</th>
+                    <th>No. of Seats</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="flightTableBody">
+                <!-- Flight data rows will be inserted here -->
+            </tbody>
         </table>
-        <br>
-        <button type="submit" >Save</button>
     </div>
-    
+
+    <footer>
+        <a href="../help/help.html">
+            <img src="../pictures/help.jpg" alt="Help" style="height: 50px;">
+        </a>
+    </footer>
+
 </body>
-<footer>
-    <a href="../help/help.html">
-        <img src="../pictures/help.jpg" alt="Logo" style="height: 50px;"> <!-- Updated path -->
-    </a>
-</footer>
 </html>
