@@ -3,7 +3,7 @@
 // Function to populate the dropdowns for origin and destination
 function populateFilters() {
     // Check if Flgts is properly loaded
-    if (!window.Flgts || Flgts.length === 0) {
+    if (!Flgts || Flgts.length === 0) {
         console.error("Flgts array is not loaded properly.");
         return;
     }
