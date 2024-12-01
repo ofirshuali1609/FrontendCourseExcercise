@@ -28,11 +28,29 @@ for (let index = 0; index < books.length; index++) {
     d.appendChild(img) ; 
     d.appendChild(datadiv) ; 
 
-    d.style.display = "flex" ;
-    d.style.margin = "10px"
-    d.style.border = "2px inset black"
-
-    datadiv.style.marginLeft = "5px"
-
     mybook.appendChild(d);
+
+// i want to see that we have an option to do style from here 
+
+
+d.style.display = "flex";
+d.style.margin = "10px";
+d.style.gap = "10px"; 
+d.style.padding = "10px"; 
+d.style.backgroundColor = "#f9f9f9"; 
+
+datadiv.style.marginLeft = "5px";
+datadiv.style.padding = "5px";
+datadiv.style.backgroundColor = "#fff"; 
+datadiv.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
+datadiv.style.fontSize = "16px"; 
+
+// Style for images inside `d` to make them larger
+const images = d.querySelectorAll("img");
+images.forEach((img) => {
+    img.style.width = "200px"; 
+    img.style.height = "auto"; 
+    img.style.borderRadius = "8px";
+    img.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)"; 
+});
 }

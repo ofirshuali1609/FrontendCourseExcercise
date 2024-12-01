@@ -36,6 +36,19 @@ h2 {
   margin: 20px 0;
 }
 
+/* Paragraph Style */
+p {
+  margin: 15px auto;
+  padding: 10px;
+  max-width: 600px;
+  font-size: 14px;
+  border-radius: 4px;
+  line-height: 1.8;
+  background-color: #fff;
+  box-shadow: 0 4px 8px  rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+
 form {
   max-width: 600px;
   margin: 0 auto;
@@ -45,6 +58,7 @@ form {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+
 label {
   display: block;
   margin: 10px 0 5px;
@@ -52,14 +66,7 @@ label {
   color: #0078d4; /* Make labels blue */
 }
 
-input[type="text"], input[type="url"] {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
+
 
 button {
   display: block;
@@ -78,23 +85,6 @@ button:hover {
   background-color: #005fa3;
 }
 
-/* Table */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-td, th {
-  border: 1px solid #ddd;
-  text-align: left;
-  padding: 8px;
-}
-
-th {
-  background-color: #0078d4;
-  color: white;
-}
 
 /* Footer */
 footer {

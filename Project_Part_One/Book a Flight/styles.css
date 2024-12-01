@@ -1,10 +1,10 @@
-/* General Styles */
+/* new General Styles */
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f9; /* Light grey background */
+  background-color: #f4f4f9; /* Light grey backgroun  d */
   color: #333;
 }
 
@@ -36,30 +36,33 @@ h2 {
   margin: 20px 0;
 }
 
-form {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 
-label {
+/* Labels and Select */
+label, select {
+  text-align: center;
   display: block;
   margin: 10px 0 5px;
   font-weight: bold;
-  color: #0078d4; /* Make labels blue */
+  color: #0078d4;
+  font-size: 14px;
 }
 
-input[type="text"], input[type="url"] {
-  width: 100%;
-  padding: 8px;
+/* Inputs and Buttons */
+input, select, button {
+  width: calc(100% - 20px);
+  padding: 10px;
   margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid #ccd6e0;
+  border-radius: 8px;
+  font-size: 14px;
   box-sizing: border-box;
 }
+
+input:focus, select:focus {
+  border-color: #0078d4;
+  outline: none;
+}
+
 
 button {
   display: block;
