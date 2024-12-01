@@ -30,7 +30,10 @@ class Dest {
 
 }
 
-const Dests = [new Dest(1, 2, 3, "http://s.co", "http://e.co"), new Dest(3, 4, 5, "http://a.co", "http://b.co")]
+const Dests = [
+    new Dest(1, "London", "London City", "https://www.londoncityairport.com/", "../pictures/London City.jpg"),
+     new Dest(3, "Tokyo", 5, "https://www.narita-airport.jp/en/", "../pictures/Tokyo.jpg")
+    ]
 
 
 

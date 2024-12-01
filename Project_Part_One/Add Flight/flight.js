@@ -83,8 +83,8 @@ class Flgt {
 
 // Array to store flight details
 const Flgts = [
-    new Flgt(1, "New York", "London", "2024-12-01", "13:01", "2024-12-02", "14:02", 50),
-    new Flgt(2, "San Francisco", "Tokyo", "2024-12-03", "15:03", "2024-12-04", "16:04", 100)
+    new Flgt(1, "New York", "London", "2024-12-01", "13:01", "2024-12-02", "14:02", 5),
+    new Flgt(2, "San Francisco", "Tokyo", "2024-12-03", "15:03", "2024-12-04", "16:04", 10)
 ];
 
 // Function to handle form submission

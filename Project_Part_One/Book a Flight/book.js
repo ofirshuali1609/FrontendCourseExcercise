@@ -1,4 +1,3 @@
-// Ensure `Flgts` array is available before proceeding
 
 // Function to populate the dropdowns for origin and destination
 function populateFilters() {
@@ -9,8 +8,8 @@ function populateFilters() {
     }
 
     // Get unique origins and destinations from Flgts array
-    const origins = [...new Set(Flgts.map(f => f.Origin))];  // Get unique origins
-    const destinations = [...new Set(Flgts.map(f => f.Destation))];  // Get unique destinations
+    const origins = [...new Set(Flgts.map(f => f.Origin))];  
+    const destinations = [...new Set(Flgts.map(f => f.Destation))];  
 
     console.log("Origins:", origins);
     console.log("Destinations:", destinations);
@@ -37,7 +36,7 @@ function populateFilters() {
 // Function to display flights in the table
 function displayFlights(flights) {
     const flightTableBody = document.getElementById("flightTableBody");
-    flightTableBody.innerHTML = ""; // Clear the table body before updating
+    flightTableBody.innerHTML = ""; 
 
     flights.forEach(f => {
         const row = document.createElement("tr");
@@ -55,7 +54,7 @@ function displayFlights(flights) {
         actionButton.innerText = "Book Now";
         actionButton.onclick = function() {
             const orderPageUrl = `../Order flights/Order flights.html?flightNum=${f.flightNum}&origin=${f.Origin}&destination=${f.Destation}&boardDate=${f.BoardDate}&boardTime=${f.BoardTime}&arrivalDate=${f.ArrivalDate}&arrivalTime=${f.ArrivalTime}&noSeat=${f.NoSeat}`;
-            window.location.href = orderPageUrl;  // This will navigate to the order page with the relative path
+            window.location.href = orderPageUrl;  
         };
 
         actionCell.appendChild(actionButton);
@@ -77,10 +76,9 @@ function filterFlights() {
         return (originFilter === "" || matchesOrigin) && (destinationFilter === "" || matchesDestination);
     });
 
-    displayFlights(filteredFlights);  // Update the table with the filtered flights
+    displayFlights(filteredFlights);  
 }
 
-// Event listeners for filter dropdowns
 document.getElementById("originFilter").addEventListener("change", filterFlights);
 document.getElementById("destinationFilter").addEventListener("change", filterFlights);
 
@@ -89,7 +87,7 @@ window.onload = function() {
     // First, check if Flgts is defined before proceeding
     if (typeof Flgts !== 'undefined' && Flgts.length > 0) {
         populateFilters();
-        displayFlights(Flgts); // Display all flights by default
+        displayFlights(Flgts); 
     } else {
         console.error("Flgts data is not available.");
     }

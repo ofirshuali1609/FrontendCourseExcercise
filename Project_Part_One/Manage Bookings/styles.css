@@ -8,6 +8,9 @@ body {
   color: #333;
 }
 
+img { 
+  width: 4rem;
+}
 /* Header */
 h1 {
   position: sticky;
