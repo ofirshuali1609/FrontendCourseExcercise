@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Project_Part_Two": {
+    "onoair-angular": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/project-part-two",
+            "outputPath": "dist/onoair-angular",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -21,12 +21,12 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              "src/assets",
+              "src/favicon.ico"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/azure-blue.css",
+
               "src/styles.css"
             ],
             "scripts": []
@@ -59,10 +59,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Project_Part_Two:build:production"
+              "buildTarget": "onoair-angular:build:production"
             },
             "development": {
-              "buildTarget": "Project_Part_Two:build:development"
+              "buildTarget": "onoair-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,12 +79,11 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              "src/assets",
+              "src/favicon.ico"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -94,6 +93,7 @@
     }
   },
   "cli": {
-    "analytics": "c9f048db-0fc3-40a2-9ac5-5324c72e9e20"
+    "analytics": "e033ab11-fa90-43c9-8932-550aaf727407"
   }
 }
+ 
