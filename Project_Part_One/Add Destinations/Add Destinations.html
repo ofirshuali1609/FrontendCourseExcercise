@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Destination</title>
+    <script src = "dest.js" defer > </script>
+    <link rel="stylesheet" href="../static/form style.css">
+</head>
+<body>
+
+    <h1>
+        <a href="../index/index.html">
+            <img src="../pictures/Logo.jpg" alt="Logo" style="height: 50px;"> <!-- Updated path -->
+        </a>
+    </h1>
+    
+    <br>
+    <h2>New Destination</h2>
+
+    <form onsubmit="save(event)" >
+
+        <!--Destination code:-->
+        <label for="destCode"> Destination code:</label>
+        <input type="text" id="destCode" name="destCode"></br>
+
+        <!--Destination name:-->
+        <label for="destName"> Destination name:</label>
+        <input type="text" id="destName" name="destName"></br>
+
+       <!--airport name:--> 
+        <label for="airportName"> airport name:</label>
+        <input type="text" id="airportName" name="airportName"></br>
+
+        <!--airport url:-->
+        <label for="airportUrl"> airport url:</label>
+        <input type="url" id="airportUrl" name="airportUrl"></br>
+    
+        <!--image url time:-->
+        <label for="imgUrl"> image url:</label>
+        <input type="url" id="imgUrl" name="imgUrl"></br>
+        
+        <button type="submit">Save</button>
+    </form>
+
+    <footer>
+        <a href="../help/help.html">
+            <img src="../pictures/help.jpg" alt="Logo" style="height: 50px;"> <!-- Updated path -->
+        </a>
+    </footer>
+
+</body>
+
+</html>

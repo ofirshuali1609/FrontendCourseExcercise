@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Flight</title>
+    <script src = "flight.js" defer > </script>
+    <link rel="stylesheet" href="../static/form style.css">
+</head>
+<body>
+    <h1>
+        <a href="../index/index.html">
+            <img src="../pictures/logo.jpg" alt="Logo" style="height: 50px;"> <!-- Updated path -->
+        </a>
+    </h1>
+    <div class="test"></div>
+    <h2>New Flight</h2>
+    <form onsubmit="save(event)"> 
+
+        <!--Flight No.:-->
+        <label for="flightNum"> Flight No.:</label>
+        <input type="text" id="flightNum" name="flightNum"></br>
+
+        <!--Origin:-->
+        <label for="Origin"> Origin:</label>
+        <input type="text" id="Origin" name="Origin"></br>
+
+       <!--Destation:--> 
+        <label for="Destation"> Destation:</label>
+        <input type="text" id="Destation" name="Destation"></br>
+
+        <!--Boarding date:-->
+        <label for="BoardDate"> Boarding date:</label>
+        <input type="date" id="BoardDate" name="BoardDate"></br>
+    
+        <!--Boarding time:-->
+        <label for="BoardTime"> Boarding time:</label>
+        <input type="time" id="BoardTime" name="BoardTime"></br>
+
+        <!--Arrival date:-->
+        <label for="ArrivalDate"> Arrival date:</label>
+        <input type="date" id="ArrivalDate" name="ArrivalDate"></br> 
+        
+        <!--Arrival time:-->
+        <label for="ArrivalTime"> Arrival time:</label>
+        <input type="time" id="ArrivalTime" name="ArrivalTime"></br>
+       
+        <!--Number of seats:--> 
+        <label for="NoSeat"> No. of seats:</label>
+        <input type="number" id="NoSeat" name="NoSeat"></br>
+        
+        <button type="submit">Save</button>
+
+    </form>
+
+    <footer>
+        <a href="../help/help.html">
+            <img src="../pictures/help.jpg" alt="Logo" style="height: 50px;"> <!-- Updated path -->
+        </a>
+    </footer>
+
+</body>
+
+</html>
