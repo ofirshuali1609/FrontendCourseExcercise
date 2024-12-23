@@ -1,0 +1,14 @@
+.example-card {
+    max-width: 200px;
+    margin-bottom: 8px;
+  }
+
+.left { 
+  float: left;
+  width: 15%;
+  overflow: hidden;
+}
+
+.right{ 
+  overflow: hidden;
+}

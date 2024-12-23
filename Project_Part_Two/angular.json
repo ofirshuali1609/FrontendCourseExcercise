@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "onoair-angular": {
+    "Project_Part_Two": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/onoair-angular",
+            "outputPath": "dist/Project_Part_Two",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -59,10 +59,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "onoair-angular:build:production"
+              "buildTarget": "Project_Part_Two:build:production"
             },
             "development": {
-              "buildTarget": "onoair-angular:build:development"
+              "buildTarget": "Project_Part_Two:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -93,7 +93,7 @@
     }
   },
   "cli": {
-    "analytics": "e033ab11-fa90-43c9-8932-550aaf727407"
+    "analytics": false
   }
 }
  

@@ -1,7 +1,17 @@
 import { Routes } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
+import { ManageFlightsComponent } from './manage-flights/manage-flights.component';
+import { ManageDestinationsComponent } from './manage-destinations/manage-destinations.component';
+import { FlightSearchComponent } from './flight-search/flight-search.component';
+import { MyBookingsComponent } from './my-bookings/my-bookings.component';
+import { HelpPageComponent } from './help-page/help-page.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
-    {path : 'home', component: HomePageComponent},
+    { path: '', component: HomePageComponent },
+    { path: 'help', component: HelpPageComponent },
+    { path: 'manageFlights', component: ManageFlightsComponent },
+    { path: 'manageDestinations', component: ManageDestinationsComponent },
+    { path: 'flightSearch', component: FlightSearchComponent },
+    { path: 'myBookings', component: MyBookingsComponent },
+
 ];
