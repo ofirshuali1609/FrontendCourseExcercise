@@ -5,6 +5,7 @@ import { ManageDestinationsComponent } from './manage-destinations/manage-destin
 import { FlightSearchComponent } from './flight-search/flight-search.component';
 import { MyBookingsComponent } from './my-bookings/my-bookings.component';
 import { HelpPageComponent } from './help-page/help-page.component';
+import { BookFlightComponent } from './book-flight/book-flight.component';
 
 export const routes: Routes = [
     { path: '', component: HomePageComponent },
@@ -13,5 +14,6 @@ export const routes: Routes = [
     { path: 'manageDestinations', component: ManageDestinationsComponent },
     { path: 'flightSearch', component: FlightSearchComponent },
     { path: 'myBookings', component: MyBookingsComponent },
+    { path: 'bookFlight', component: BookFlightComponent },
 
 ];
