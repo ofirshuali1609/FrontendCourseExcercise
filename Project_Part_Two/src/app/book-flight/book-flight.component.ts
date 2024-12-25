@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, input } from '@angular/core';
 
 @Component({
   selector: 'app-book-flight',
@@ -7,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrl: './book-flight.component.css'
 })
 export class BookFlightComponent {
+  @Input() flightNo =0;
+  @Input() boradingDate : Date = new Date();
+  @Input() bordingTime =0;
+  @Input() arrivalDate : Date = new Date();
+  @Input() arrivalTime =0;
+  @Input() origin =0;
+  @Input() destination =0;
+
 
 }
