@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
 import { UpcomingOrderComponent } from "../../upcoming-order/upcoming-order.component";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-my-bookings',
-  imports: [MatCardModule, UpcomingOrderComponent],
+  imports: [UpcomingOrderComponent,RouterModule],
   templateUrl: './my-bookings.component.html',
   styleUrl: './my-bookings.component.css'
 })
