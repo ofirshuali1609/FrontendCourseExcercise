@@ -3,9 +3,11 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { ManageFlightsComponent } from './flights/manage-flights/manage-flights.component';
 import { ManageDestinationsComponent } from './destinations/manage-destinations/manage-destinations.component';
 import { FlightSearchComponent } from './flights/flight-search/flight-search.component';
-import { MyBookingsComponent } from './my-bookings/my-bookings.component';
+import { MyBookingsComponent } from './Booking/my-bookings/my-bookings.component';
 import { HelpPageComponent } from './help-page/help-page.component';
-import { BookFlightComponent } from './book-flight/book-flight.component';
+import { BookFlightComponent } from './Booking/book-flight/book-flight.component';
+import { ShowFlightComponent } from './flights/show-flight/show-flight.component';
+import { ShowDestinationComponent } from './destinations/show-destination/show-destination.component';
 
 export const routes: Routes = [
     { path: '', component: HomePageComponent },
@@ -14,6 +16,9 @@ export const routes: Routes = [
     { path: 'manageDestinations', component: ManageDestinationsComponent },
     { path: 'flightSearch', component: FlightSearchComponent },
     { path: 'myBookings', component: MyBookingsComponent },
-    { path: 'bookFlight/:flightNo/:boradingDate/:bordingTime/:arrivalDate/:arrivalTime/:origin/:destination', component: BookFlightComponent },
+    { path: 'bookFlight/:flightNo', component: BookFlightComponent },
+    { path: 'showFlight/:flightNo', component: ShowFlightComponent },
+    { path: 'showDestination/:code', component: ShowDestinationComponent },
 
+    
 ];

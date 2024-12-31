@@ -1,6 +1,7 @@
+<div class="left"> 
 
-<div *ngFor="let flight of FLIGHTS">
-  <div *ngIf="FLIGHTS.length > 0 && hasFlightInNextWeek(flight.boradingDate); else noFlights">
+<div *ngFor="let flight of flights">
+  <div *ngIf="flights.length > 0 && hasFlightInNextWeek(flight.boradingDate); else noFlights">
   <mat-card class="example-card" appearance="outlined">
     <img mat-card-image src="{{flight.imageUrl}}" alt="{{flight.destination}}">
     <mat-card-content>
@@ -19,3 +20,6 @@
 <ng-template #noFlights>
 <p> No Flights available at this week </p>
 </ng-template>
+
+</div>
+  

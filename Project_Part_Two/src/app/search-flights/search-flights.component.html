@@ -1,85 +1,77 @@
-<p>search-flights works!</p>
 <mat-form-field>
-  <mat-label>Filter flights</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Tel Aviv" #input>
-</mat-form-field>
-
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" matSort>
-      <!-- Image Column -->
-      <ng-container matColumnDef="image">
-          <th mat-header-cell *matHeaderCellDef> Image </th>
-          <td mat-cell *matCellDef="let row">
-              <img [src]="row.imageUrl" alt="{{row.destination}} Image" style="width:100px; height:auto;">
-          </td>
-      </ng-container>
-
-      <!-- Flight No. Column -->
-      <ng-container matColumnDef="flightNo">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Flight No. </th>
-          <td mat-cell *matCellDef="let row"> {{row.flightNo}} </td>
-      </ng-container>
-
-      <!-- Origin Column -->
-      <ng-container matColumnDef="origin">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Origin </th>
-          <td mat-cell *matCellDef="let row"> {{row.origin}} </td>
-      </ng-container>
-
-      <!-- Destination Column -->
-      <ng-container matColumnDef="destination">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Destination </th>
-          <td mat-cell *matCellDef="let row"> {{row.destination}} </td>
-      </ng-container>
-
-      <!-- Boarding Date Column -->
-      <ng-container matColumnDef="boradingDate">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Boarding Date </th>
-          <td mat-cell *matCellDef="let row"> {{row.boradingDate | date: 'yyyy-MM-dd'}} </td>
-      </ng-container>
-
-      <!-- Boarding Time Column -->
-      <ng-container matColumnDef="bordingTime">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Boarding Time </th>
-          <td mat-cell *matCellDef="let row"> {{row.bordingTime}} </td>
-      </ng-container>
-
-      <!-- Arrival Date Column -->
-      <ng-container matColumnDef="arrivalDate">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Arrival Date </th>
-          <td mat-cell *matCellDef="let row"> {{row.arrivalDate | date: 'yyyy-MM-dd'}} </td>
-      </ng-container>
-
-      <!-- Arrival Time Column -->
-      <ng-container matColumnDef="arrivalTime">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Arrival Time </th>
-          <td mat-cell *matCellDef="let row"> {{row.arrivalTime}} </td>
-      </ng-container>
-
-      <!-- Number of Seats Column -->
-      <ng-container matColumnDef="numberOfSeats">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Number of Seats </th>
-          <td mat-cell *matCellDef="let row"> {{row.numberOfSeats}} </td>
-      </ng-container>
-
-      <!-- Actions Column -->
-      <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef> Actions </th>
-          <td mat-cell *matCellDef="let row">
-              <button  mat-button [routerLink]="['/bookFlight', row.flightNo, row.boradingDate, row.bordingTime,
-               row.arrivalDate, row.arrivalTime,row.origin, row.destination]">Booking</button>
-          </td>
-      </ng-container>
-
-      <!-- Header Row -->
-      <tr mat-header-row *matHeaderRowDef="['image', 'flightNo', 'origin', 'destination', 'boradingDate', 'bordingTime', 'arrivalDate', 'arrivalTime', 'numberOfSeats', 'actions']"></tr>
-      <tr mat-row *matRowDef="let row; columns: ['image', 'flightNo', 'origin', 'destination', 'boradingDate', 'bordingTime', 'arrivalDate', 'arrivalTime', 'numberOfSeats', 'actions'];"></tr>
-
-      <!-- No Data Row -->
-      <tr class="mat-row" *matNoDataRow>
-          <td class="mat-cell" colspan="10">No data matching the filter "{{input.value}}"</td>
-      </tr>
-  </table>
-
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of flights"></mat-paginator>
-</div>
+    <mat-label>Filter flights</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Tel Aviv" #input>
+  </mat-form-field>
+  
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+  
+        <!-- Flight No. Column -->
+        <ng-container matColumnDef="flightNo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Flight No. </th>
+            <td mat-cell *matCellDef="let row"> {{row.flightNo}} </td>
+        </ng-container>
+  
+        <!-- Origin Column -->
+        <ng-container matColumnDef="origin">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Origin </th>
+            <td mat-cell *matCellDef="let row"> {{row.origin}} </td>
+        </ng-container>
+  
+        <!-- Destination Column -->
+        <ng-container matColumnDef="destination">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Destination </th>
+            <td mat-cell *matCellDef="let row"> {{row.destination}} </td>
+        </ng-container>
+  
+        <!-- Boarding Date Column -->
+        <ng-container matColumnDef="boradingDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Boarding Date </th>
+            <td mat-cell *matCellDef="let row"> {{row.boradingDate | date: 'yyyy-MM-dd'}} </td>
+        </ng-container>
+  
+        <!-- Boarding Time Column -->
+        <ng-container matColumnDef="bordingTime">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Boarding Time </th>
+            <td mat-cell *matCellDef="let row"> {{row.bordingTime}} </td>
+        </ng-container>
+  
+        <!-- Arrival Date Column -->
+        <ng-container matColumnDef="arrivalDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Arrival Date </th>
+            <td mat-cell *matCellDef="let row"> {{row.arrivalDate | date: 'yyyy-MM-dd'}} </td>
+        </ng-container>
+  
+        <!-- Arrival Time Column -->
+        <ng-container matColumnDef="arrivalTime">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Arrival Time </th>
+            <td mat-cell *matCellDef="let row"> {{row.arrivalTime}} </td>
+        </ng-container>
+  
+        <!-- Number of Seats Column -->
+        <ng-container matColumnDef="numberOfSeats">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Number of Seats </th>
+            <td mat-cell *matCellDef="let row"> {{row.numberOfSeats}} </td>
+        </ng-container>
+  
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let row">
+                <button  mat-button [routerLink]="['/bookFlight', row.flightNo]">Booking</button>
+            </td>
+        </ng-container>
+  
+        <!-- Header Row -->
+        <tr mat-header-row *matHeaderRowDef="['flightNo', 'origin', 'destination', 'boradingDate', 'bordingTime', 'arrivalDate', 'arrivalTime', 'numberOfSeats', 'actions']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['flightNo', 'origin', 'destination', 'boradingDate', 'bordingTime', 'arrivalDate', 'arrivalTime', 'numberOfSeats', 'actions'];"></tr>
+  
+        <!-- No Data Row -->
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="10">No data matching the filter "{{input.value}}"</td>
+        </tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of flights"></mat-paginator>
+  </div>
+  
