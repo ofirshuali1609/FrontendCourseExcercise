@@ -1,0 +1,27 @@
+.example-card {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.flight-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 40px; /* מרווחים בין השורות והעמודות */
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+}
+
+.detail-item label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.detail-item span {
+  display: block;
+}

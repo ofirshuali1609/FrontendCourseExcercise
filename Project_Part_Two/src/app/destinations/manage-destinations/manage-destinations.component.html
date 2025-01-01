@@ -27,9 +27,12 @@
 
       <!-- Boarding Date Column -->
       <ng-container matColumnDef="airportUrl">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Airport URL </th>
-          <td mat-cell *matCellDef="let row"> {{row.airportUrl}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Airport Website </th>
+        <td mat-cell *matCellDef="let row">
+            <a href="{{row.airportUrl}}" target="_blank">{{row.airportUrl}}</a>
+        </td>
       </ng-container>
+
 
       <!--image url Column-->
       <ng-container matColumnDef="image">

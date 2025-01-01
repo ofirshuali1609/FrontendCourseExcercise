@@ -1,5 +1,9 @@
 <div class="card">
   <div class="info-section">
+    <img src="{{destination?.imageUrl}}" alt="Airport Image" class="airport-image">
+</div>
+
+  <div class="info-section">
       <label>Code:</label>
       <div>{{code}}</div>
   </div>
@@ -15,8 +19,5 @@
       <label>Airport URL:</label>
       <div><a href="{{destination?.airportUrl}}" target="_blank">Visit Airport</a></div>
   </div>
-  <div class="info-section">
-      <label>Image:</label>
-      <img src="{{destination?.imageUrl}}" alt="Airport Image" class="airport-image">
-  </div>
+
 </div>
