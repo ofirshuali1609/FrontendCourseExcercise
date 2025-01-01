@@ -1,25 +1,23 @@
-<div class="left"> 
+<div class="left">
+  <div *ngIf="flightsAvailableNextWeek; else noFlights">
+    <div *ngFor="let flight of flights">
+      <div *ngIf="hasFlightInNextWeek(flight.boradingDate)">
+        <mat-card class="example-card" appearance="outlined">
+          <img mat-card-image src="{{flight.imageUrl}}" alt="{{flight.destination}}">
+          <mat-card-content>
+            <h3>
+              <b>{{flight.destination}} {{flight.boradingDate | date: 'yyyy-MM-dd'}}</b>
+            </h3>
+          </mat-card-content>
+          <mat-card-actions>
+            <button  mat-button [routerLink]="['/bookFlight', flight.flightNo]">Booking</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
 
-<div *ngFor="let flight of flights">
-  <div *ngIf="flights.length > 0 && hasFlightInNextWeek(flight.boradingDate); else noFlights">
-  <mat-card class="example-card" appearance="outlined">
-    <img mat-card-image src="{{flight.imageUrl}}" alt="{{flight.destination}}">
-    <mat-card-content>
-      <h3>
-
-        <b>{{flight.destination}} {{flight.boradingDate | date: 'yyyy-MM-dd'}} </b>
-      </h3>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>BOOK</button>
-    </mat-card-actions>
-</mat-card>
+  <ng-template #noFlights>
+    <p>No Flights available this week</p>
+  </ng-template>
 </div>
-</div>
-
-<ng-template #noFlights>
-<p> No Flights available at this week </p>
-</ng-template>
-
-</div>
-  
