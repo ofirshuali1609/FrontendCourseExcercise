@@ -1,7 +1,22 @@
-<p>
-    Code : {{code}} <br>
-    Name: {{destination?.name}} <br>
-    Airport Name: {{destination?.airportName}} <br>
-    Airport URL: {{destination?.airportUrl}}  <br>
-    Arrival Date: {{destination?.imageUrl}} <br>
-</p>
+<div class="card">
+  <div class="info-section">
+      <label>Code:</label>
+      <div>{{code}}</div>
+  </div>
+  <div class="info-section">
+      <label>Name:</label>
+      <div>{{destination?.name}}</div>
+  </div>
+  <div class="info-section">
+      <label>Airport Name:</label>
+      <div>{{destination?.airportName}}</div>
+  </div>
+  <div class="info-section">
+      <label>Airport URL:</label>
+      <div><a href="{{destination?.airportUrl}}" target="_blank">Visit Airport</a></div>
+  </div>
+  <div class="info-section">
+      <label>Image:</label>
+      <img src="{{destination?.imageUrl}}" alt="Airport Image" class="airport-image">
+  </div>
+</div>

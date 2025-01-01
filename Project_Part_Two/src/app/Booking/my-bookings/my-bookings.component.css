@@ -3,12 +3,16 @@
     margin-bottom: 8px;
   }
 
-.left { 
+.left {
   float: left;
   width: 15%;
   overflow: hidden;
 }
 
-.right{ 
+.right{
   overflow: hidden;
+}
+
+h2 {
+  text-align: center; 
 }
