@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OrderComponent } from './order.component';
+import { ViewFlightComponent } from './view-flight.component';
 
-describe('OrderComponent', () => {
-  let component: OrderComponent;
-  let fixture: ComponentFixture<OrderComponent>;
+describe('ViewFlightComponent', () => {
+  let component: ViewFlightComponent;
+  let fixture: ComponentFixture<ViewFlightComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [OrderComponent]
+      imports: [ViewFlightComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(OrderComponent);
+    fixture = TestBed.createComponent(ViewFlightComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

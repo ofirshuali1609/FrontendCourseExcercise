@@ -10,4 +10,4 @@ export class Flight {
         public numberOfSeats: number,
         public imageUrl: string
     ) {}
-} 
+}

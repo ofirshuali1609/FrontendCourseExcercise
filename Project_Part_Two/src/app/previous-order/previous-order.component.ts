@@ -1,17 +1,20 @@
 import { Component } from '@angular/core';
 import { booking } from '../model/booking';
 import { BookingService } from '../service/booking/booking.service';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-previous-order',
-  imports: [],
+  imports: [MatCardModule, MatButtonModule,RouterModule],
   templateUrl: './previous-order.component.html',
   styleUrl: './previous-order.component.css'
 })
 export class PreviousOrderComponent {
   bookings !: booking[];
 
-  constructor(private bookingService: BookingService) { } 
+  constructor(private bookingService: BookingService) { }
   ngOnInit(): void {
     this.bookings = this.bookingService.list();
     }

@@ -12,13 +12,13 @@ import { Passenger } from '../../model/passenger';
 export class BookingService {
 
   flights !: Flight[] ;
-  
+
 
   private bookings = [
 
     new booking (this.flights[0], new Passenger(7, "cristiano ronaldo", 839746292)),
-    new booking (this.flights[1], new Passenger(10, "lionel messi", 839746292)),
- 
+    new booking (this.flights[1], new Passenger(10, "lionel messi", 739746291)),
+
   ]
 
   constructor(private destinationService: DestinastionsService, private flightService: FlightsService) { }
@@ -26,11 +26,11 @@ export class BookingService {
   ngOnInit(): void {
     this.flights = this.flightService.list();  }
 
-  list() { 
-    return this.bookings; 
+  list() {
+    return this.bookings;
   }
 
-  get(flightNo: string): booking | undefined { 
-    return this.bookings.find(p => p.flight.flightNo == flightNo); 
-  } 
+  get(flightNo: string): booking | undefined {
+    return this.bookings.find(p => p.flight.flightNo == flightNo);
+  }
 }

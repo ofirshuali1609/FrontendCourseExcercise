@@ -4,6 +4,7 @@ import { booking } from '../model/booking';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
+import { ViewFlightComponent } from '../view-flight/view-flight.component';
 
 @Component({
   selector: 'app-upcoming-order',
@@ -14,9 +15,12 @@ import { RouterModule } from '@angular/router';
 export class UpcomingOrderComponent {
   bookings !: booking[];
 
-  constructor(private bookingService: BookingService) { } 
+  constructor(private bookingService: BookingService) { }
   ngOnInit(): void {
     this.bookings = this.bookingService.list();
+    if (!this.bookings) {
+      console.error('No bookings available');
+    }
     }
 }
 

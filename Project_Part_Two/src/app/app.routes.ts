@@ -9,6 +9,9 @@ import { BookFlightComponent } from './Booking/book-flight/book-flight.component
 import { ShowFlightComponent } from './flights/show-flight/show-flight.component';
 import { ShowDestinationComponent } from './destinations/show-destination/show-destination.component';
 import { LastMinuteFlightComponent } from './last-minute-flight/last-minute-flight.component';
+import { ViewFlightComponent } from './view-flight/view-flight.component';
+import { UpcomingOrderComponent } from './upcoming-order/upcoming-order.component';
+import { PreviousOrderComponent } from './previous-order/previous-order.component';
 
 export const routes: Routes = [
     { path: '', component: HomePageComponent },
@@ -21,6 +24,8 @@ export const routes: Routes = [
     { path: 'showFlight/:flightNo', component: ShowFlightComponent },
     { path: 'showDestination/:code', component: ShowDestinationComponent },
     { path: 'bookFlight/:flightNo', component: LastMinuteFlightComponent },
+    { path: 'upcomingOrder/:flightNo, :passenger', component: ViewFlightComponent }
+
 
 
 ];

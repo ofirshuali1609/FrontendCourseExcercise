@@ -1,1 +1,25 @@
-<p>show-booking works!</p>
+<h2>Book Flight</h2>
+<mat-card class="example-card" appearance="outlined">
+    <mat-card-content>
+        <div class="flight-details">
+            <div class="detail-item">
+                <label>Origin:</label>
+                <span>{{flight?.origin}}</span>
+            </div>
+            <div class="detail-item">
+                <label>Boarding:</label>
+                <span>{{flight?.boradingDate}}</span>
+            </div>
+            <div class="detail-item">
+                <label>Destination:</label>
+                <span>{{flight?.destination}}</span>
+            </div>
+            <div class="detail-item">
+                <label>Landing:</label>
+                <span>{{flight?.arrivalDate}}</span>
+            </div>
+
+
+        </div>
+    </mat-card-content>
+</mat-card>
