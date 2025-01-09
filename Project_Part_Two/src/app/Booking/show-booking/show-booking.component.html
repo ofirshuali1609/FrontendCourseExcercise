@@ -4,22 +4,27 @@
         <div class="flight-details">
             <div class="detail-item">
                 <label>Origin:</label>
-                <span>{{flight?.origin}}</span>
+                <span>{{booking?.flight?.origin}}</span>
             </div>
             <div class="detail-item">
                 <label>Boarding:</label>
-                <span>{{flight?.boradingDate}}</span>
+                <span>{{booking?.flight?.boradingDate}}</span>
             </div>
             <div class="detail-item">
                 <label>Destination:</label>
-                <span>{{flight?.destination}}</span>
+                <span>{{booking?.flight?.destination}}</span>
             </div>
             <div class="detail-item">
                 <label>Landing:</label>
-                <span>{{flight?.arrivalDate}}</span>
+                <span> {{booking?.flight?.arrivalDate}}</span>
             </div>
-
-
         </div>
     </mat-card-content>
 </mat-card>
+<h4>Passenger 1</h4>
+
+        <div *ngFor="let passenger of [booking?.passenger]">
+          <p>Passenger Name: {{ passenger?.name }}</p>
+          <p>Passenger Passport: {{ passenger?.passportNumber }}</p>
+        </div>
+        

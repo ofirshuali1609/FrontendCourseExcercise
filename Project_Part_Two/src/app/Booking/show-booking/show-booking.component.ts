@@ -3,21 +3,24 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Flight } from '../../model/flight';
 import { FlightsService } from '../../service/flights/flights.service';
+import { BookingService } from '../../service/booking/booking.service';
+import { booking } from '../../model/booking';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-show-booking',
-  imports: [MatCardModule, MatButtonModule],
+  imports: [MatCardModule, MatButtonModule, CommonModule],
   templateUrl: './show-booking.component.html',
   styleUrl: './show-booking.component.css'
 })
 export class ShowBookingComponent {
   @Input() flightNo ='0';
-  flight !: Flight | undefined;
+  booking !: booking | undefined;
 
 
-    constructor(private flightService: FlightsService) {
+    constructor(private flightService: FlightsService, private BookingService: BookingService) {
     }
     ngOnInit(): void {
-      this.flight = this.flightService.get(this.flightNo);  }
+      this.booking = this.BookingService.get(this.flightNo);  }
     }
 

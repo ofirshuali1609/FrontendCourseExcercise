@@ -28,7 +28,7 @@ export class FlightsService {
 
   constructor() { }
 
-  list() {
+  list() : Flight[] {
     return this.flights;
   }
 
