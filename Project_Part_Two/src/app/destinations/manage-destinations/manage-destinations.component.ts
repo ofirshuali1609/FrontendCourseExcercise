@@ -22,23 +22,33 @@ import { DestinastionsService } from '../../service/destination/destinastions.se
 export class ManageDestinationsComponent {
   destinations : destination[] = [];
   dataSource!: MatTableDataSource<destination>;
-  
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private destinationService: DestinastionsService) { 
+  constructor(private destinationService: DestinastionsService) {
   }
   ngOnInit(): void {
     this.destinations = this.destinationService.list();
     this.dataSource = new MatTableDataSource(this.destinations);
   }
 
-    ngAfterViewInit() {
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    }
-  
+  deleteDestination(code: string): void {
+
+    this.destinations = this.destinations.filter(destination => destination.code !== code);
+
+    // Update the dataSource
+    this.dataSource = new MatTableDataSource(this.destinations);
+
+    // Reassign the paginator and sorter to the dataSource
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    this.destinationService.delete(code);
+}
+
+
+
     applyFilter(event: Event) {
       const filterValue = (event.target as HTMLInputElement).value;
       this.dataSource.filter = filterValue.trim().toLowerCase();

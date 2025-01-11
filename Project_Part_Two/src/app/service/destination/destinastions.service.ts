@@ -24,4 +24,8 @@ export class DestinastionsService {
     get(code: string) : destination | undefined {
       return this.destinations.find(destination => destination.code === code);
     }
+    delete(code: string): void {
+      // סינון המערך ומחיקת היעד עם הקוד המתאים
+      this.destinations = this.destinations.filter(destination => destination.code !== code);
+    }
 }

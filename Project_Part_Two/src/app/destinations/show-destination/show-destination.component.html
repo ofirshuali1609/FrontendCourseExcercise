@@ -1,23 +1,44 @@
-<div class="card">
-  <div class="info-section">
-    <img src="{{destination?.imageUrl}}" alt="Airport Image" class="airport-image">
-</div>
+<h2>New Destination</h2>
+<mat-card class="example-card" appearance="outlined">
+    <mat-card-content>
+        <form>
+            <!-- Destination Code -->
+            <mat-form-field appearance="fill">
+                <mat-label>Destination Code</mat-label>
+                <input matInput [(ngModel)]="destination!.code" name="code" required>
+            </mat-form-field>
+            <br>
 
-  <div class="info-section">
-      <label>Code:</label>
-      <div>{{code}}</div>
-  </div>
-  <div class="info-section">
-      <label>Name:</label>
-      <div>{{destination?.name}}</div>
-  </div>
-  <div class="info-section">
-      <label>Airport Name:</label>
-      <div>{{destination?.airportName}}</div>
-  </div>
-  <div class="info-section">
-      <label>Airport URL:</label>
-      <div><a href="{{destination?.airportUrl}}" target="_blank">Visit Airport</a></div>
-  </div>
+            <!-- Destination Name -->
+            <mat-form-field appearance="fill">
+                <mat-label>Destination Name</mat-label>
+                <input matInput [(ngModel)]="destination!.name" name="name" required>
+            </mat-form-field>
+            <br>
 
-</div>
+            <!-- Airport Name -->
+            <mat-form-field appearance="fill">
+                <mat-label>Airport Name</mat-label>
+                <input matInput [(ngModel)]="destination!.airportName" name="airportName" required>
+            </mat-form-field>
+            <br>
+
+            <!-- Airport URL -->
+            <mat-form-field appearance="fill">
+                <mat-label>Airport URL</mat-label>
+                <input matInput [(ngModel)]="destination!.airportUrl" name="airportUrl" required>
+            </mat-form-field>
+            <br>
+
+            <!-- Image URL -->
+            <mat-form-field appearance="fill">
+                <mat-label>Image URL</mat-label>
+                <input matInput [(ngModel)]="destination!.imageUrl" name="imageUrl" required>
+            </mat-form-field>
+            <br>
+            
+            <!-- Save Button -->
+            <button mat-raised-button color="primary" type="submit">Save</button>
+        </form>
+    </mat-card-content>
+</mat-card>
