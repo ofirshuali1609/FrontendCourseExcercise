@@ -1,27 +1,77 @@
+<mat-card class="example-card" appearance="outlined">
+  <mat-card-content>
+      <form>
+          <!-- Flight No. -->
+          <mat-form-field appearance="fill">
+              <mat-label>Flight No.</mat-label>
+              <input matInput [(ngModel)]="flight!.flightNo" name="flightNo" required>
+          </mat-form-field>
+          <br>
 
-<div class="card">
-  <div class="info-section">
-      <label>Flight NO.:</label>
-      <div>{{flightNo}}</div>
-  </div>
-  <div class="info-section">
-      <label>Origin:</label>
-      <div>{{flight?.origin}}</div>
-  </div>
-  <div class="info-section">
-      <label>Destination:</label>
-      <div>{{flight?.destination}}</div>
-  </div>
-  <div class="info-section">
-      <label>Boarding Date:</label>
-      <div>{{flight?.boradingDate}}</div>
-  </div>
-  <div class="info-section">
-      <label>Arrival Date:</label>
-      <div>{{flight?.arrivalDate}}</div>
-  </div>
-  <div class="info-section">
-      <label>Number of Seats:</label>
-      <div>{{flight?.numberOfSeats}}</div>
-  </div>
-</div>
+          <!-- Origin -->
+          <mat-form-field appearance="fill">
+              <mat-label>Origin</mat-label>
+              <input matInput [(ngModel)]="flight!.origin" name="origin" required>
+          </mat-form-field>
+        <br>
+
+          <!-- Destination -->
+          <mat-form-field appearance="fill">
+              <mat-label>Destination</mat-label>
+              <input matInput [(ngModel)]="flight!.destination" name="destination" required>
+          </mat-form-field>
+          <br>
+
+          <!-- Number of Seats -->
+          <mat-form-field appearance="fill">
+              <mat-label>Number of Seats</mat-label>
+              <input matInput [(ngModel)]="flight!.numberOfSeats" name="seats" type="number" required>
+          </mat-form-field>
+          <br>
+
+          <!-- Boarding Date and Time -->
+          <div style="display: flex; gap: 20px;">
+              <mat-form-field appearance="fill" style="flex: 1;">
+                  <mat-label>Boarding Date</mat-label>
+                  <input matInput [matDatepicker]="boardingDatePicker" [(ngModel)]="flight!.boradingDate" name="boardingDate" required>
+                  <mat-datepicker-toggle matSuffix [for]="boardingDatePicker"></mat-datepicker-toggle>
+                  <mat-datepicker #boardingDatePicker></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" style="flex: 1;">
+                  <mat-label>Boarding Time</mat-label>
+                  <input matInput [(ngModel)]="flight!.bordingTime" name="boardingTime" type="time" required>
+              </mat-form-field>
+          </div>
+
+          <!-- Arrival Date and Time -->
+          <div style="display: flex; gap: 20px;">
+              <mat-form-field appearance="fill" style="flex: 1;">
+                  <mat-label>Arrival Date</mat-label>
+                  <input matInput [matDatepicker]="arrivalDatePicker" [(ngModel)]="flight!.arrivalDate" name="arrivalDate" required>
+                  <mat-datepicker-toggle matSuffix [for]="arrivalDatePicker"></mat-datepicker-toggle>
+                  <mat-datepicker #arrivalDatePicker></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" style="flex: 1;">
+                  <mat-label>Arrival Time</mat-label>
+                  <input matInput [(ngModel)]="flight!.arrivalTime" name="arrivalTime" type="time" required>
+              </mat-form-field>
+          </div>
+
+          <!-- Flight Category (optional) -->
+          <mat-form-field appearance="fill">
+              <mat-label>Flight Category</mat-label>
+              <mat-select [(ngModel)]="flight!.category" name="category" required>
+                  <mat-option value="ski">Ski</mat-option>
+                  <mat-option value="shopping">Shopping</mat-option>
+                  <mat-option value="tour">Tour</mat-option>
+              </mat-select>
+          </mat-form-field>
+          <br>
+
+          <!-- Save Button -->
+          <button mat-raised-button color="primary" type="submit">Save</button>
+      </form>
+  </mat-card-content>
+</mat-card>
