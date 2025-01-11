@@ -9,27 +9,33 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-book-flight',
-  imports: [MatCardModule, MatButtonModule,MatFormFieldModule,MatNativeDateModule,MatDatepickerModule,MatInputModule,FormsModule,MatSelectModule],
+  imports: [MatCardModule, MatButtonModule,MatFormFieldModule,MatNativeDateModule,MatDatepickerModule,MatInputModule,FormsModule,MatSelectModule,NgFor],
   templateUrl: './book-flight.component.html',
   styleUrl: './book-flight.component.css'
 })
 export class BookFlightComponent {
-  protected readonly value = signal('');
+  numPassengers: number = 0; // Number of passengers
+  passengers: { name: string, passportId: string }[] = []; // Array to hold passenger data
 
-  protected onInput(event: Event) {
-    this.value.set((event.target as HTMLInputElement).value);
+  @Input() flightNo = '0';
+  flight!: Flight | undefined;
+
+  constructor(private flightService: FlightsService) {}
+
+  ngOnInit(): void {
+    this.flight = this.flightService.get(this.flightNo);
   }
 
-  @Input() flightNo ='0';
-  flight !: Flight | undefined;
-
-
-    constructor(private flightService: FlightsService) {
+  // Function to generate passenger fields dynamically
+  generatePassengerFields() {
+    // Clear any previous passenger data before creating new fields
+    this.passengers = [];
+    for (let i = 0; i < this.numPassengers; i++) {
+      this.passengers.push({ name: '', passportId: '' }); // Create an empty passenger object for each passenger
     }
-    ngOnInit(): void {
-      this.flight = this.flightService.get(this.flightNo);  }
-    }
-
+  }
+}

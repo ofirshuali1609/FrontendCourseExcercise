@@ -1,5 +1,6 @@
+<h2>Book a Flight</h2>
 
-<h2>Book Flight</h2>
+<!-- Flight Details Card -->
 <mat-card class="example-card" appearance="outlined">
     <mat-card-content>
         <div class="flight-details">
@@ -20,5 +21,38 @@
                 <span>{{flight?.arrivalDate}}</span>
             </div>
         </div>
+    </mat-card-content>
+</mat-card>
+
+<!-- Number of Passengers and Personal Information -->
+<mat-card class="example-card" appearance="outlined">
+    <mat-card-content>
+        <form>
+            <!-- Number of Passengers -->
+            <mat-form-field appearance="fill">
+                <mat-label>No of passengers:</mat-label>
+                <input matInput type="number" [(ngModel)]="numPassengers" name="numPassengers" (ngModelChange)="generatePassengerFields()" required>
+            </mat-form-field>
+
+            <!-- Dynamic Passenger Details -->
+            <div *ngFor="let passenger of passengers; let i = index">
+                <div class="passenger-details">
+                    <h3>Passenger {{i + 1}}</h3>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Name:</mat-label>
+                        <input matInput [(ngModel)]="passenger.name" name="passengerName{{i}}" required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Passport ID:</mat-label>
+                        <input matInput [(ngModel)]="passenger.passportId" name="passportId{{i}}" required>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <!-- Save Button -->
+            <button mat-raised-button color="primary" type="submit">Save</button>
+        </form>
     </mat-card-content>
 </mat-card>
