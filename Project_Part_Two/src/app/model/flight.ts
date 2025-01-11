@@ -7,6 +7,7 @@ export class Flight {
         public bordingTime: string,
         public arrivalDate: Date,
         public arrivalTime: string,
+        public category: string,
         public numberOfSeats: number,
         public imageUrl: string
     ) {}
