@@ -57,10 +57,17 @@
 
       <!-- Actions Column -->
       <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef> Actions </th>
-          <td mat-cell *matCellDef="let row">
-              <button  mat-button [routerLink]="['/showFlight', row.flightNo]">Show Details</button>
-          </td>
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let row">
+            <!-- Show Details Button (with pencil icon) -->
+            <button mat-icon-button [routerLink]="['/showFlight', row.flightNo]">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <!-- Delete Button (with delete icon) -->
+            <button mat-icon-button color="warn" (click)="deleteFlight(row.flightNo)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
       </ng-container>
 
       <!-- Header Row -->

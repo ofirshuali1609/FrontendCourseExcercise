@@ -23,12 +23,12 @@ export class ManageFlightsComponent implements OnInit {
 
   flights : Flight[] = [];
   dataSource!: MatTableDataSource<Flight>;
-  
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private flightService: FlightsService) { 
+  constructor(private flightService: FlightsService) {
   }
   ngOnInit(): void {
     this.flights = this.flightService.list();
@@ -39,7 +39,15 @@ export class ManageFlightsComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     }
-  
+
+    deleteFlight(flightNo: string): void {
+      this.flights = this.flights.filter(flight => flight.flightNo !== flightNo);
+      this.dataSource = new MatTableDataSource(this.flights);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.flightService.delete(flightNo);
+    }
+
     applyFilter(event: Event) {
       const filterValue = (event.target as HTMLInputElement).value;
       this.dataSource.filter = filterValue.trim().toLowerCase();

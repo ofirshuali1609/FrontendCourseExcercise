@@ -35,4 +35,7 @@ export class FlightsService {
   get(flightNo: string) : Flight | undefined {
     return this.flights.find(flight => flight.flightNo === flightNo);
   }
+  delete(flightNo: string): void {
+    this.flights = this.flights.filter(flight => flight.flightNo !== flightNo);
+  }
 }
