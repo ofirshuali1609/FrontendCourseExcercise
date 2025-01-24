@@ -1,0 +1,13 @@
+.header-logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 40px;
+  background-color: #0078d4;
+  height: 80px;
+}
+
+.logo-container {
+  display: flex;
+}
+
