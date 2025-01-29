@@ -22,7 +22,7 @@ export class BookingService {
 
   // Initialize bookings in the constructor
   initializeBookings(): void {
-    this.flights = this.flightService.list(); // Make sure list() returns the flights correctly
+    this.flightService.list().then((flights) => (this.flights = flights)); // Make sure list() returns the flights correctly
     this.bookings = [
       new booking(this.flights[0], new Passenger(7, "Cristiano Ronaldo", 839746292)),
       new booking(this.flights[1], new Passenger(10, "Lionel Messi", 739746291)),

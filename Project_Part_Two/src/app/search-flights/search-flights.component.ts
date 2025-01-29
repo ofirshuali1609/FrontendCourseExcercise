@@ -31,7 +31,7 @@ export class SearchFlightsComponent implements OnInit {
   constructor(private flightService: FlightsService) { 
   }
   ngOnInit(): void {
-    this.flights = this.flightService.list();
+    this.flightService.list().then((flights) => (this.flights = flights));
     this.dataSource = new MatTableDataSource(this.flights);
   }
 

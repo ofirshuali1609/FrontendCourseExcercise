@@ -27,7 +27,7 @@ export class BookFlightComponent {
   constructor(private flightService: FlightsService) {}
 
   ngOnInit(): void {
-    this.flight = this.flightService.get(this.flightNo);
+    this.flightService.get(this.flightNo).then((flights) => (this.flight = flights));
   }
 
   // Function to generate passenger fields dynamically

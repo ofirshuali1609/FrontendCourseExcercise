@@ -1,25 +1,25 @@
-.card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  border-radius: 10px;
-  padding: 20px;
-  max-width: 400px;
-  margin: 20px auto;
-  font-family: 'Arial', sans-serif;
-}
+  .card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 400px;
+    margin: 20px auto;
+    font-family: 'Arial', sans-serif;
+  }
 
-.info-section {
-  margin-bottom: 10px;
-}
+  .info-section {
+    margin-bottom: 10px;
+  }
 
-.info-section label {
-  font-weight: bold;
-  color: #333;
-  display: block;
-}
+  .info-section label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+  }
 
-.info-section div {
-  color: #666;
-  padding-left: 10px;
-}
+  .info-section div {
+    color: #666;
+    padding-left: 10px;
+  }
