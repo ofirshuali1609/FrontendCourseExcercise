@@ -1,72 +1,69 @@
 <h2>Manage Destinations</h2>
-<mat-form-field>
-  <mat-label>Filter flights</mat-label>
+
+<mat-form-field appearance="outline">
+  <mat-label>Filter destinations</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Tel Aviv" #input>
 </mat-form-field>
 
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort>
 
-      <!-- Flight No. Column -->
-      <ng-container matColumnDef="code">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Code </th>
-          <td mat-cell *matCellDef="let row"> {{row.code}} </td>
-      </ng-container>
+    <!-- Code Column -->
+    <ng-container matColumnDef="code">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Code </th>
+      <td mat-cell *matCellDef="let row"> {{row.code}} </td>
+    </ng-container>
 
-      <!-- Origin Column -->
-      <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-          <td mat-cell *matCellDef="let row"> {{row.name}} </td>
-      </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+    </ng-container>
 
-      <!-- Destination Column -->
-      <ng-container matColumnDef="airportName">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Airport Name </th>
-          <td mat-cell *matCellDef="let row"> {{row.airportName}} </td>
-      </ng-container>
+    <!-- Airport Name Column -->
+    <ng-container matColumnDef="airportName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Airport Name </th>
+      <td mat-cell *matCellDef="let row"> {{row.airportName}} </td>
+    </ng-container>
 
-      <!-- Boarding Date Column -->
-      <ng-container matColumnDef="airportUrl">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Airport Website </th>
-        <td mat-cell *matCellDef="let row">
-            <a href="{{row.airportUrl}}" target="_blank">{{row.airportUrl}}</a>
-        </td>
-      </ng-container>
+    <!-- Airport Website Column -->
+    <ng-container matColumnDef="airportUrl">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Airport Website </th>
+      <td mat-cell *matCellDef="let row">
+        <a href="{{row.airportUrl}}" target="_blank">{{row.airportUrl}}</a>
+      </td>
+    </ng-container>
 
+    <!-- Image Column -->
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef> Image </th>
+      <td mat-cell *matCellDef="let row">
+        <img [src]="row.imageUrl" alt="Image" width="100">
+      </td>
+    </ng-container>
 
-      <!--image url Column-->
-      <ng-container matColumnDef="image">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
-        <td mat-cell *matCellDef="let row">
-            <img src="{{row.imageUrl}}" alt="Image">
-        </td>
-        </ng-container>
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button [routerLink]="['/showDestination', row.code]">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteDestination(row.code)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
 
-      <!-- Actions Column -->
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> Actions </th>
-        <td mat-cell *matCellDef="let row">
-            <!-- Show Details Button (with pencil icon) -->
-            <button mat-icon-button [routerLink]="['/showDestination', row.code]">
-                <mat-icon>edit</mat-icon>
-            </button>
-            <!-- Delete Button (with delete icon) -->
-            <button mat-icon-button color="warn" (click)="deleteDestination(row.code)">
-                <mat-icon>delete</mat-icon>
-            </button>
-        </td>
-      </ng-container>
+    <!-- Header and Row Definitions -->
+    <tr mat-header-row *matHeaderRowDef="['code', 'name', 'airportName', 'airportUrl', 'image', 'actions']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['code', 'name', 'airportName', 'airportUrl', 'image', 'actions'];"></tr>
 
-
-      <!-- Header Row -->
-      <tr mat-header-row *matHeaderRowDef="['code', 'name', 'airportName', 'airportUrl', 'image', 'actions']"></tr>
-      <tr mat-row *matRowDef="let row; columns: ['code', 'name', 'airportName', 'airportUrl', 'image','actions'];"></tr>
-
-      <!-- No Data Row -->
-      <tr class="mat-row" *matNoDataRow>
-          <td class="mat-cell" colspan="10">No data matching the filter "{{input.value}}"</td>
-      </tr>
+    <!-- No Data Row -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="6">No data matching the filter "{{input.value}}"</td>
+    </tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of flights"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of destinations"></mat-paginator>
 </div>

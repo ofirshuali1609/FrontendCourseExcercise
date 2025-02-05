@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FlightsService } from '../flights/flights.service';
-import { DestinastionsService } from '../destination/destinastions.service'; // Ensure you need this
+import { DestinationsService } from '../destination/destinations.service';
 import { booking } from '../../model/booking';
 import { Flight } from '../../model/flight';
 import { Passenger } from '../../model/passenger';
@@ -14,7 +14,7 @@ export class BookingService {
   bookings: booking[] = [];
 
   constructor(
-    private destinationService: DestinastionsService, 
+    private destinationService: DestinationsService,
     private flightService: FlightsService
   ) {
     this.initializeBookings();

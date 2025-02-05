@@ -2,7 +2,7 @@ import { Injectable, Query } from '@angular/core';
 import { Flight } from '../../model/flight';
 import { doc, setDoc, Firestore, collection, getDocs } from '@angular/fire/firestore';
 import { flightConverter } from '../../flight-converter';
-import { getDoc } from 'firebase/firestore';
+import { getDoc, where } from 'firebase/firestore';
 import { query } from '@angular/animations';
 
 @Injectable({
@@ -40,14 +40,15 @@ export class FlightsService {
   async get(flightNo: string): Promise<Flight | undefined> {
     return undefined;
   }
+
   async delete(flightNo: string): Promise<void> { }
   /*
-    async add(NewFlight: Flight): Promise<void> { 
+    async add(NewFlight: Flight): Promise<void> {
       console.log("add");
-  
+
       //await addDoc(collection(this.firestore, 'flights'), NewFlight);
       const flightscollcetion = collection(this.firestore, 'flights').withConverter(flightConverter);
-      await addDoc(flightscollcetion, NewFlight); 
+      await addDoc(flightscollcetion, NewFlight);
      }
   }
   */

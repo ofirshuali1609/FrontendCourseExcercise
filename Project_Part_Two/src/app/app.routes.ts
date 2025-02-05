@@ -11,7 +11,6 @@ import { ShowDestinationComponent } from './destinations/show-destination/show-d
 import { LastMinuteFlightComponent } from './last-minute-flight/last-minute-flight.component';
 import { ShowBookingComponent } from './Booking/show-booking/show-booking.component';
 
-
 export const routes: Routes = [
     { path: '', component: HomePageComponent },
     { path: 'help', component: HelpPageComponent },

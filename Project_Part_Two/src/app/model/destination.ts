@@ -6,4 +6,4 @@ export class destination {
         public airportUrl: string,
         public imageUrl: string
     ) {}
-} 
+}

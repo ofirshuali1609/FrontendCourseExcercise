@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DestinastionsService } from '../../service/destination/destinastions.service';
+import { DestinationsService } from '../../service/destination/destinations.service';
 import { destination } from '../../model/destination';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,10 +20,30 @@ export class ShowDestinationComponent {
   @Input() code ='0';
   destination !: destination | undefined;
 
-  constructor(private DestinastionsService: DestinastionsService) {
+  Newdestination = new destination( "", "","", "", "");
+  constructor(private destinationsService: DestinationsService) {}
+
+
+  onSubmit() {
+    this.destinationsService.add(this.Newdestination);
+    console.log("Form Submitted");
   }
   ngOnInit(): void {
-    this.destination = this.DestinastionsService.get(this.code);  }
+    console.log("onInit");
+    if (this.code) {
+      this.destinationsService.get(this.code).then(
+        (temp?: destination) => {
+          if (temp) {
+            this.destination = temp;
+            console.log("Destination found");
+          } else {
+            console.log("Destination not found");
+          }
+        }
+      ).catch(error => {
+        console.error("Failed to fetch destination", error);
+      });
+    }
   }
-
+}
 
