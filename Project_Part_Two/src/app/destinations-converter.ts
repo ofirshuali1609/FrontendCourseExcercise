@@ -1,6 +1,5 @@
 import { QueryDocumentSnapshot, SnapshotOptions } from "@angular/fire/firestore";
 import { destination } from "./model/destination";
-import { Timestamp } from "firebase/firestore"; // Ensure Firebase is imported
 
 export const destinationConverter = {
     toFirestore: (destination: destination) => {
@@ -16,12 +15,12 @@ export const destinationConverter = {
 
     fromFirestore: (snapshot: QueryDocumentSnapshot, options: SnapshotOptions): destination => {
         const data = snapshot.data(options);
-        return {
-            code: data["code"],
-            name: data["name"],
-            airportName: data["airportName"],
-            airportUrl: data["airportUrl"],
-            imageUrl: data["imageUrl"]
-        };
+        return new destination(
+            data["code"],
+            data["name"],
+            data["airportName"],
+            data["airportUrl"],
+            data["imageUrl"] 
+        ) ;
     }
 };

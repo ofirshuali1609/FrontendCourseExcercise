@@ -1,14 +1,45 @@
-import { Injectable, Query } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Flight } from '../../model/flight';
-import { doc, setDoc, Firestore, collection, getDocs } from '@angular/fire/firestore';
+import { doc, setDoc, Firestore, collection, getDocs, deleteDoc, query } from '@angular/fire/firestore';
 import { flightConverter } from '../../flight-converter';
-import { getDoc, where } from 'firebase/firestore';
-import { query } from '@angular/animations';
+import {  where } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FlightsService {
+  constructor(private firestore: Firestore) { }
+
+  async list(): Promise<Flight[]> {
+    const flightscollcetion = collection(this.firestore, 'flights').withConverter(flightConverter);
+    const querySnapshot = await getDocs(flightscollcetion);
+    return querySnapshot.docs.map((doc) => doc.data());
+  }
+
+  async get(flightNo: string): Promise<Flight | undefined> {
+    const flightscollcetion = collection(this.firestore, 'flights').withConverter(flightConverter);
+    const q = query(flightscollcetion, where("flightNo", "==", flightNo));
+    const snapshot = await getDocs(q);    
+    return snapshot.docs.length ? (snapshot.docs[0].data() as Flight) : undefined;
+  }
+
+  async delete(flightNo: string): Promise<void> { 
+    const flightscollcetion = collection(this.firestore, 'flights').withConverter(flightConverter);
+    const q = query(flightscollcetion, where("flightNo", "==", flightNo));
+    const snapshot = await getDocs(q);
+    if (snapshot.docs.length) {
+      const docRef = doc(this.firestore, 'flights', snapshot.docs[0].id);
+      await deleteDoc(docRef);
+    }
+  }
+
+  async add(NewFlight: Flight): Promise<void> {
+    const flightDocRef = doc(this.firestore, 'flights', NewFlight.flightNo).withConverter(flightConverter);
+    await setDoc(flightDocRef, NewFlight);
+  }
+}
+
+
   /*
     private flights = [
       new Flight('W61283','Tel Aviv','Krakow',new Date('2025-01-18'),
@@ -29,31 +60,3 @@ export class FlightsService {
       'tour',220,'https://a.travel-assets.com/findyours-php/viewfinder/images/res40/475000/475457-Los-Angeles.jpg'),
       ]
   */
-  constructor(private firestore: Firestore) { }
-
-  async list(): Promise<Flight[]> {
-    const flightscollcetion = collection(this.firestore, 'flights').withConverter(flightConverter);
-    const querySnapshot = await getDocs(flightscollcetion);
-    return querySnapshot.docs.map((doc) => doc.data());
-  }
-
-  async get(flightNo: string): Promise<Flight | undefined> {
-    return undefined;
-  }
-
-  async delete(flightNo: string): Promise<void> { }
-  /*
-    async add(NewFlight: Flight): Promise<void> {
-      console.log("add");
-
-      //await addDoc(collection(this.firestore, 'flights'), NewFlight);
-      const flightscollcetion = collection(this.firestore, 'flights').withConverter(flightConverter);
-      await addDoc(flightscollcetion, NewFlight);
-     }
-  }
-  */
-  async add(NewFlight: Flight): Promise<void> {
-    const flightDocRef = doc(this.firestore, 'flights', NewFlight.flightNo).withConverter(flightConverter);
-    await setDoc(flightDocRef, NewFlight);
-  }
-}

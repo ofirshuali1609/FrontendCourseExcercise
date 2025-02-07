@@ -20,7 +20,7 @@ export const routes: Routes = [
     { path: 'myBookings', component: MyBookingsComponent },
     { path: 'bookFlight/:flightNo', component: BookFlightComponent },
     { path: 'showFlight', component: ShowFlightComponent },
-    { path: 'showDestination/:code', component: ShowDestinationComponent },
+    { path: 'showDestination', component: ShowDestinationComponent },
     { path: 'bookFlight/:flightNo', component: LastMinuteFlightComponent },
     { path: 'showBooking/:flightNo', component: ShowBookingComponent },
 ];

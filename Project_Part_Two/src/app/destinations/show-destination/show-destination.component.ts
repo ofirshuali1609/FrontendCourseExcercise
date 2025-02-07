@@ -10,6 +10,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
+
+
 @Component({
   selector: 'app-show-destination',
   imports: [MatCardModule, MatButtonModule,MatFormFieldModule,MatNativeDateModule,MatDatepickerModule,MatInputModule,FormsModule,MatSelectModule],
@@ -21,6 +23,7 @@ export class ShowDestinationComponent {
   destination !: destination | undefined;
 
   Newdestination = new destination( "", "","", "", "");
+
   constructor(private destinationsService: DestinationsService) {}
 
 
@@ -34,15 +37,13 @@ export class ShowDestinationComponent {
       this.destinationsService.get(this.code).then(
         (temp?: destination) => {
           if (temp) {
-            this.destination = temp;
+            this.Newdestination = temp;
             console.log("Destination found");
           } else {
-            console.log("Destination not found");
+             console.log("Destination not found");
           }
         }
-      ).catch(error => {
-        console.error("Failed to fetch destination", error);
-      });
+      )
     }
   }
 }

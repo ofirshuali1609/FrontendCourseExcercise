@@ -14,8 +14,7 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-show-flight',
-  imports: [ CommonModule, MatButtonModule, RouterModule, FormsModule,
-    MatCardModule, MatFormFieldModule,MatNativeDateModule,MatDatepickerModule,MatInputModule,MatSelectModule],
+  imports: [ CommonModule, MatButtonModule, RouterModule, FormsModule, MatCardModule, MatFormFieldModule,MatNativeDateModule,MatDatepickerModule,MatInputModule,MatSelectModule],
   templateUrl: './show-flight.component.html',
   styleUrl: './show-flight.component.css'
 })
@@ -33,7 +32,6 @@ export class ShowFlightComponent  {
   }
 
   ngOnInit(): void {
-    //this.flightService.get(this.flightNo).then((flights) => (this.flight = flights)); 
     console.log("oninit");
     if (this.flightNo) {
         this.flightService.get(this.flightNo).then(
@@ -47,7 +45,6 @@ export class ShowFlightComponent  {
            }
           );
      }
-     //this.flightService.add(this.Newflight);
   }
 
 }

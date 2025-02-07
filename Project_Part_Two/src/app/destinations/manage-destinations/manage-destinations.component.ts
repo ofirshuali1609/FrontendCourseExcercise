@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -12,6 +12,8 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
 import { DestinationsService } from '../../service/destination/destinations.service';
 import { destination } from '../../model/destination';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../../dialog/dialog.component';
 
 @Component({
   selector: 'app-manage-destinations',
@@ -27,12 +29,24 @@ import { destination } from '../../model/destination';
     MatDividerModule,
     MatIconModule,
     CommonModule,
-    RouterModule
+    RouterModule,
+    MatButtonModule
   ],
   templateUrl: './manage-destinations.component.html',
-  styleUrl: './manage-destinations.component.css'
+  styleUrl: './manage-destinations.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ManageDestinationsComponent implements OnInit {
+
+  readonly dialog = inject(MatDialog);
+
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(DialogComponent, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
 
   destinations: destination[] = [];
   dataSource!: MatTableDataSource<destination>;
@@ -48,14 +62,12 @@ export class ManageDestinationsComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.destinations);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-    }).catch(error => console.error("Error fetching destinations:", error));
+    })
   }
 
   ngAfterViewInit() {
-    if (this.dataSource) {
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    }
+    this.dataSource.paginator = this.paginator;
+     this.dataSource.sort = this.sort;
   }
 
   deleteDestination(code: string): void {

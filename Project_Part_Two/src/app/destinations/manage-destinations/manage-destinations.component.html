@@ -1,6 +1,6 @@
 <h2>Manage Destinations</h2>
 
-<mat-form-field appearance="outline">
+<mat-form-field >
   <mat-label>Filter destinations</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Tel Aviv" #input>
 </mat-form-field>
@@ -49,6 +49,7 @@
         <button mat-icon-button [routerLink]="['/showDestination', row.code]">
           <mat-icon>edit</mat-icon>
         </button>
+        
         <button mat-icon-button color="warn" (click)="deleteDestination(row.code)">
           <mat-icon>delete</mat-icon>
         </button>
@@ -61,9 +62,11 @@
 
     <!-- No Data Row -->
     <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" colspan="6">No data matching the filter "{{input.value}}"</td>
+      <td class="mat-cell" colspan="10">No data matching the filter "{{input.value}}"</td>
     </tr>
   </table>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of destinations"></mat-paginator>
 </div>
+
+
