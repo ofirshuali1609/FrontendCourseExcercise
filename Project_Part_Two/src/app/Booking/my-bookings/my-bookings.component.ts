@@ -5,7 +5,7 @@ import { PreviousOrderComponent } from "../previous-order/previous-order.compone
 
 @Component({
   selector: 'app-my-bookings',
-  imports: [ RouterModule, UpcomingOrderComponent, PreviousOrderComponent ],
+  imports: [ RouterModule ],
   templateUrl: './my-bookings.component.html',
   styleUrl: './my-bookings.component.css'
 })

@@ -31,15 +31,27 @@ export class SearchFlightsComponent implements OnInit {
   constructor(private flightService: FlightsService) { 
   }
   ngOnInit(): void {
-    this.flightService.list().then((flights) => (this.flights = flights));
-    this.dataSource = new MatTableDataSource(this.flights);
+    this.flightService.list().then((flights) => {
+      this.flights = flights;
+      this.dataSource = new MatTableDataSource(this.flights);
+      this.dataSource.paginator = this.paginator; 
+      this.dataSource.sort = this.sort;
+    });
   }
 
     ngAfterViewInit() {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     }
-  
+
+    deleteFlight(flightNo: string): void {
+      this.flights = this.flights.filter(flight => flight.flightNo !== flightNo);
+      this.dataSource = new MatTableDataSource(this.flights);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.flightService.delete(flightNo);
+    }
+
     applyFilter(event: Event) {
       const filterValue = (event.target as HTMLInputElement).value;
       this.dataSource.filter = filterValue.trim().toLowerCase();

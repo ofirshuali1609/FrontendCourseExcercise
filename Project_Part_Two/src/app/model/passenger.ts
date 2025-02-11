@@ -1,7 +1,7 @@
 export class Passenger {
     constructor(
-        public passangerNumber: number,
-        public name: string,
-        public passportNumber: number
+        public name : string,
+        public passport : number,
+        public baggages : number,
     ) {}
 }

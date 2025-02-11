@@ -3,7 +3,8 @@ import { Passenger } from "./passenger";
 
 export class booking {
     constructor(
-        public flight : Flight,
-        public passenger : Passenger
+        public flight : string,
+        public passengers : Passenger[],
+        public numOfPassengers : number,
     ) {}
 } 

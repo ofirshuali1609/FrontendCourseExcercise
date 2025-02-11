@@ -27,7 +27,7 @@
 <!-- Number of Passengers and Personal Information -->
 <mat-card class="example-card" appearance="outlined">
     <mat-card-content>
-        <form>
+        <form (ngSubmit)="onSubmit()">
             <!-- Number of Passengers -->
             <mat-form-field appearance="fill">
                 <mat-label>No of passengers:</mat-label>
@@ -41,13 +41,18 @@
 
                     <mat-form-field appearance="fill">
                         <mat-label>Name:</mat-label>
-                        <input matInput [(ngModel)]="passenger.name" name="passengerName{{i}}" required>
+                        <input matInput [(ngModel)]="newBooking.passengers[i].name" name="name{{i}}" required>
                     </mat-form-field>
 
                     <mat-form-field appearance="fill">
                         <mat-label>Passport ID:</mat-label>
-                        <input matInput [(ngModel)]="passenger.passportId" name="passportId{{i}}" required>
-                    </mat-form-field>
+                        <input matInput type="number" [(ngModel)]="newBooking.passengers[i].passport" name="passport{{i}}" required>
+                      </mat-form-field>
+                      
+                      <mat-form-field appearance="fill">
+                        <mat-label>Baggages:</mat-label>
+                        <input matInput type="number" [(ngModel)]="newBooking.passengers[i].baggages" name="baggages{{i}}" required>
+                      </mat-form-field>
                 </div>
             </div>
 

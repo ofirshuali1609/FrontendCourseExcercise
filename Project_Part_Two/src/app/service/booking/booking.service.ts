@@ -1,41 +1,47 @@
 import { Injectable } from '@angular/core';
-import { FlightsService } from '../flights/flights.service';
-import { DestinationsService } from '../destination/destinations.service';
 import { booking } from '../../model/booking';
-import { Flight } from '../../model/flight';
-import { Passenger } from '../../model/passenger';
+import { doc, setDoc, Firestore, collection, getDocs, deleteDoc, query } from '@angular/fire/firestore';
+import { bookingConverter } from '../../booking-converter';
+import { where } from 'firebase/firestore';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class BookingService {
+export class BookingsService {
+  constructor(private firestore: Firestore) {}
 
-  flights: Flight[] = [];
-  bookings: booking[] = [];
-
-  constructor(
-    private destinationService: DestinationsService,
-    private flightService: FlightsService
-  ) {
-    this.initializeBookings();
+  // פונקציה לרשימת כל הזמנות הטיסה
+  async list(): Promise<booking[]> {
+    const bookingsCollection = collection(this.firestore, 'flightBookings').withConverter(bookingConverter);
+    const querySnapshot = await getDocs(bookingsCollection);
+    return querySnapshot.docs.map((doc) => doc.data());
   }
 
-  // Initialize bookings in the constructor
-  initializeBookings(): void {
-    this.flightService.list().then((flights) => (this.flights = flights)); // Make sure list() returns the flights correctly
-    this.bookings = [
-      new booking(this.flights[0], new Passenger(7, "Cristiano Ronaldo", 839746292)),
-      new booking(this.flights[1], new Passenger(10, "Lionel Messi", 739746291)),
-    ];
+  // פונקציה לקבלת הזמנה לפי מספר טיסה
+  async get(flightNo: string): Promise<booking | undefined> {
+    const bookingsCollection = collection(this.firestore, 'bookings').withConverter(bookingConverter);
+    const q = query(bookingsCollection, where("flight", "==", flightNo));
+    const snapshot = await getDocs(q);    
+    return snapshot.docs.length ? (snapshot.docs[0].data() as booking) : undefined;
   }
 
-  // List all bookings
-  list(): booking[] {
-    return this.bookings;
+  // פונקציה למחיקת הזמנה לפי מספר טיסה
+  async delete(flightNo: string): Promise<void> { 
+    const bookingsCollection = collection(this.firestore, 'bookings').withConverter(bookingConverter);
+    const q = query(bookingsCollection, where("flight", "==", flightNo));
+    const snapshot = await getDocs(q);
+    if (snapshot.docs.length) {
+      const docRef = doc(this.firestore, 'bookings', snapshot.docs[0].id);
+      await deleteDoc(docRef);
+    }
   }
 
-  // Get a booking by flight number
-  get(flightNo: string): booking | undefined {
-    return this.bookings.find(p => p.flight.flightNo === flightNo);
+  // פונקציה להוספת הזמנה חדשה
+  async add(newBooking: booking): Promise<void> {
+    console.log("add");
+    const bookingDocRef = doc(this.firestore, 'bookings', newBooking.flight).withConverter(bookingConverter);
+    await setDoc(bookingDocRef, newBooking);
   }
+
 }

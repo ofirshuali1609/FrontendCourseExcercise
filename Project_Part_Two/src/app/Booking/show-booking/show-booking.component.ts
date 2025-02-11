@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Flight } from '../../model/flight';
 import { FlightsService } from '../../service/flights/flights.service';
-import { BookingService } from '../../service/booking/booking.service';
+import { BookingsService } from '../../service/booking/booking.service';
 import { booking } from '../../model/booking';
 import { CommonModule } from '@angular/common';
 
@@ -18,9 +18,9 @@ export class ShowBookingComponent {
   booking !: booking | undefined;
 
 
-    constructor(private flightService: FlightsService, private BookingService: BookingService) {
+    constructor(private flightService: FlightsService, private BookingsService: BookingsService) {
     }
     ngOnInit(): void {
-      this.booking = this.BookingService.get(this.flightNo);  }
+        }
     }
 
