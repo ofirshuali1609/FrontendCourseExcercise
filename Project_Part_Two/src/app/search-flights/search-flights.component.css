@@ -2,3 +2,60 @@ img {
   width:100px;
   height:auto;
 }
+
+.search-section {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.search-container > * {
+  padding: 0 1.5rem;
+  height: 100%;
+}
+
+.search-container > *:first-child {
+  padding: 0 1.5rem 0 0;
+}
+
+.table-container {
+  padding: 1rem;
+}
+
+.design-table {
+  padding: 0 1rem;
+  background-color: white;
+  border: 1px solid lightgray;
+}
+
+.no-results {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.icon {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+th {
+  font-weight: bold;
+}
+
+.date-filter {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}

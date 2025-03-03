@@ -1,27 +1,28 @@
-.example-card {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.flight-details {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px 40px; /* מרווחים בין השורות והעמודות */
-}
-
-.detail-item {
+.pass-details {
   display: flex;
   align-items: center;
+  gap: 1rem;
 }
 
-.detail-item label {
-  font-weight: bold;
-  margin-right: 10px;
+.mat-stepper-vertical {
+  margin-top: 8px;
 }
 
-.detail-item span {
-  display: block;
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+.luggage-card {
+  max-width: 400px;
+  margin: 1rem;
+}
+
+.luggage-card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.luggage-card-footer {
+  padding: 16px;
 }
